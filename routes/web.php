@@ -1,5 +1,10 @@
 <?php
 
+use App\Models\Entities\Particulier;
+use App\Models\Entities\QRCode;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,15 +17,47 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
+    //date_default_timezone_set("Africa/Brazzaville");
+    $date = Carbon::now()->isoWeek;
+    date_default_timezone_set("Africa/Casablanca");
+    $date1 = Carbon::now();
+    dd($date, $date1);
     return view('welcome');
 });
+Route::get('test', function () {
 
-Auth::routes();
+    DB::transaction(function () {
+        DB::table('users')->update(['votes' => 1]);
+        DB::table('posts')->delete();
+    }, 2);
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+    //dump(Particulier::find(1)->identifiant);
+    //dump(Particulier::find(2)->identifiant);
+    //$code = QRCode::find(1);
+    $code0 = DB::table('q_r_codes')->first();
+    $code1 = DB::table('q_r_codes')->where('id','=',1)->get();
 
-Route::get('/home', 'HomeController@index')->name('home');
+    //Log::info($code0);
+    $t = QRCode::select('*')
+        ->where([
+            ['id','=',2]
+        ])
+        ->get();
+    //dd($t[0]); == dd($t->first()->paiement);
+
+    dump($t);
+    $z = $t[0]->update([
+        'use' => true,
+        'montant' => 150,
+    ]);
+    dd($t, $z);
+    dd(QRCode::all()
+        ->where('use','=',false)
+        ->where('montant','>',100)
+    );
+    //dd($code, $code->paiement);
+    die();
+    //return view('welcome');
+});
