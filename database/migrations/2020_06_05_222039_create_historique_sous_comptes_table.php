@@ -15,6 +15,8 @@ class CreateHistoriqueSousComptesTable extends Migration
     {
         Schema::create('historique_sous_comptes', function (Blueprint $table) {
             $table->id();
+            $table->string('action');
+            $table->foreignId('sous_compte_id');
             $table->timestamps();
         });
     }

@@ -15,7 +15,12 @@ class CreateDemandesTable extends Migration
     {
         Schema::create('demandes', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->double('montant');
+            $table->string('contenu');
+            $table->boolean('statut');
+            $table->dateTime('date_envoi');
+            $table->foreignId('client_to');
+            $table->foreignId('client_from');
         });
     }
 

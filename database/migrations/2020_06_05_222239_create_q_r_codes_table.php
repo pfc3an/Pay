@@ -15,7 +15,11 @@ class CreateQRCodesTable extends Migration
     {
         Schema::create('q_r_codes', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->double("montant");
+            $table->dateTime("date");
+            $table->boolean("use")->default(false);
+            $table->integer("nbr_utilisation")->default(1);
+            $table->foreignId('particulier_id');
         });
     }
 

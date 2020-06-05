@@ -15,6 +15,9 @@ class CreateHistoriquePlafondCommercantsTable extends Migration
     {
         Schema::create('historique_plafond_commercants', function (Blueprint $table) {
             $table->id();
+            $table->double('plafond');
+            $table->foreignId('type_id');
+            $table->foreignId('admin_id');
             $table->timestamps();
         });
     }

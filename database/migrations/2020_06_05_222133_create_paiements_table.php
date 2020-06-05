@@ -15,7 +15,9 @@ class CreatePaiementsTable extends Migration
     {
         Schema::create('paiements', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->dateTime('date');
+            $table->foreignId('qr_code_id');
+            //$table->timestamps();
         });
     }
 

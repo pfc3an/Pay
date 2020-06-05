@@ -15,6 +15,11 @@ class CreateTypesTable extends Migration
     {
         Schema::create('types', function (Blueprint $table) {
             $table->id();
+            $table->string('designation');
+            $table->double('plafond_solde');
+            $table->double('plafond_retrait');
+            $table->double('plafond_transfert');
+            $table->foreignId('pays_id');
             $table->timestamps();
         });
     }

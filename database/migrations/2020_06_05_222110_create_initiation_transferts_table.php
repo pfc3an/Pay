@@ -15,7 +15,16 @@ class CreateInitiationTransfertsTable extends Migration
     {
         Schema::create('initiation_transferts', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->bigInteger('id_destinataire');
+            $table->double('montant');
+            $table->string('tel');
+            $table->float('taux');
+            $table->float('frais');
+            $table->string('devise');
+            $table->dateTime('date');
+            $table->string('code_initiation');
+            $table->boolean('recuperer')->default(false);
+            $table->foreignId('particulier_id');
         });
     }
 

@@ -15,7 +15,10 @@ class CreateTransfertsTable extends Migration
     {
         Schema::create('transferts', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->dateTime('date');
+            $table->foreignId('particulier_id');
+            $table->foreignId('initiation_transfert_id');
+            //$table->timestamps();
         });
     }
 

@@ -15,6 +15,18 @@ class CreateParticuliersTable extends Migration
     {
         Schema::create('particuliers', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('identifiant');
+            $table->string('profil');
+            $table->double('solde');
+            $table->double('solde_erreur')->default(0);
+            $table->integer('digit_code');
+            $table->boolean('retrait');
+            $table->boolean('depot');
+            $table->boolean('transfert_national');
+            $table->boolean('transfert_international');
+            $table->boolean('paiement');
+            $table->boolean('generation_qr');
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }

@@ -15,6 +15,8 @@ class CreateCommercantsTable extends Migration
     {
         Schema::create('commercants', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('type_id');
+            $table->foreignId('particulier_id');
             $table->timestamps();
         });
     }

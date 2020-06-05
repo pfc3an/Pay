@@ -15,6 +15,9 @@ class CreatePaiementParticuliersTable extends Migration
     {
         Schema::create('paiement_particuliers', function (Blueprint $table) {
             $table->id();
+            $table->double('montant');
+            $table->foreignId('paiement_id');
+            $table->foreignId('particulier_id');
             $table->timestamps();
         });
     }

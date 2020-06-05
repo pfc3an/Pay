@@ -15,6 +15,11 @@ class CreateSousComptesTable extends Migration
     {
         Schema::create('sous_comptes', function (Blueprint $table) {
             $table->id();
+            $table->string('pass');
+            $table->boolean('activer')->default(false);
+            $table->dateTime('date_activation')->nullable();
+            $table->foreignId('client_id');
+            $table->foreignId('commercant_id');
             $table->timestamps();
         });
     }

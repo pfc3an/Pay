@@ -15,6 +15,10 @@ class CreateFacturesTable extends Migration
     {
         Schema::create('factures', function (Blueprint $table) {
             $table->id();
+            $table->string('email');
+            $table->boolean('payer')->default(false);
+            $table->string('url_fichier');
+            $table->foreignId('commercant_id');
             $table->timestamps();
         });
     }
