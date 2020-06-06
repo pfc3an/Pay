@@ -58,6 +58,21 @@ class AddForeignKey extends Migration
         Schema::table('historique_sous_comptes', function (Blueprint $table){
             $table->foreign('sous_compte_id')->references('id')->on('sous_comptes')->onDelete('cascade');
         });
+        Schema::table('caissiers', function (Blueprint $table){
+            $table->foreign('agence_id')->references('id')->on('agences')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        });
+        Schema::table('rectification_depots', function (Blueprint $table){
+            $table->foreign('caissier_id')->references('id')->on('caissiers')->onDelete('cascade');
+        });
+        Schema::table('depots', function (Blueprint $table){
+            $table->foreign('caissier_id')->references('id')->on('caissiers')->onDelete('cascade');
+            $table->foreign('particulier_id')->references('id')->on('particuliers')->onDelete('cascade');
+        });
+        Schema::table('retraits', function (Blueprint $table){
+            $table->foreign('caissier_id')->references('id')->on('caissiers')->onDelete('cascade');
+            $table->foreign('particulier_id')->references('id')->on('particuliers')->onDelete('cascade');
+        });
         /*Schema::table('users', function (Blueprint $table){
             $table->foreign('pays_id')->references('id')->on('pays')->onDelete('cascade');
         });
