@@ -11,10 +11,14 @@ class PaiementParticulier extends Model
         'montant', 'paiement_id', 'particulier_id'
     ];
 
+
     public function paiemment(){
         return $this->belongsTo(Paiement::class);
     }
     public function particulier(){
         return $this->belongsTo(Particulier::class);
     }
+
+
+
 }

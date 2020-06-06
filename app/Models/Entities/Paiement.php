@@ -17,4 +17,8 @@ class Paiement extends Model
     public function paiement_particulier(){
         return $this->hasMany(PaiementParticulier::class);
     }
+
+    /*public function particulier(){
+        return $this->belongsToMany(Particulier::class, 'paiement_particuliers')->withPivot('montant');
+    }*/
 }

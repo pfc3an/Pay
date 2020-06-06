@@ -39,4 +39,8 @@ class Particulier extends Model
     public function retraits(){
         return null;
     }
+
+    /*public function paiments(){
+        return $this->belongsToMany(Paiement::class, 'paiement_particuliers')->withPivot('montant');
+    }*/
 }

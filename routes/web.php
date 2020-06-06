@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Entities\PaiementParticulier;
 use App\Models\Entities\Particulier;
 use App\Models\Entities\QRCode;
 use Carbon\Carbon;
@@ -27,15 +28,25 @@ Route::get('/', function () {
 });
 Route::get('test', function () {
 
-    DB::transaction(function () {
+    $pp = \App\Models\Entities\Paiement::find(1);
+    foreach ($pp->particulier as $role) {
+        //echo $role->pivot->created_at;
+        dump($role->pivot);
+    }
+
+    dd($pp);
+
+
+    /*DB::transaction(function () {
         DB::table('users')->update(['votes' => 1]);
         DB::table('posts')->delete();
-    }, 2);
+    }, 2);*/
 
 
     //dump(Particulier::find(1)->identifiant);
     //dump(Particulier::find(2)->identifiant);
-    //$code = QRCode::find(1);
+    $code = QRCode::find(1);
+    dd($code->particulier);
     $code0 = DB::table('q_r_codes')->first();
     $code1 = DB::table('q_r_codes')->where('id','=',1)->get();
 
