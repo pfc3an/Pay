@@ -8,7 +8,7 @@ class RectificationDepot extends Model
 {
     public $timestamps = false;
     protected $fillable = [
-        'montant_correcte', 'date', 'caissier_id'
+        'montant_correcte', 'date', 'depot_id', 'caissier_id'
     ];
 
     public function caissier(){

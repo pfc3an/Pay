@@ -63,6 +63,7 @@ class AddForeignKey extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
         Schema::table('rectification_depots', function (Blueprint $table){
+            $table->foreign('depot_id')->references('id')->on('depots')->onDelete('cascade');
             $table->foreign('caissier_id')->references('id')->on('caissiers')->onDelete('cascade');
         });
         Schema::table('depots', function (Blueprint $table){

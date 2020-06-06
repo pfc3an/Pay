@@ -17,6 +17,7 @@ class CreateRectificationDepotsTable extends Migration
             $table->id();
             $table->double('montant_correcte');
             $table->dateTime('date');
+            $table->foreignId('depot_id');
             $table->foreignId('caissier_id');
             //$table->timestamps();
         });

@@ -24,5 +24,9 @@ class DatabaseSeeder extends Seeder
         $this->call(DemandeSeeder::class);
         $this->call(InitiationTransfertSeeder::class);
         $this->call(TransfertSeeder::class);
+        $this->call(AgenceSeeder::class);
+        $this->call(CaissierSeeder::class);
+        $this->call(DepotSeeder::class);
+        $this->call(RetraitSeeder::class);
     }
 }

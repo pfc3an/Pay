@@ -88,5 +88,35 @@ class UserSeeder extends Seeder
             'pays_id' => 2,
             //'confirmation_token' => true, //str_replace('/', '', bcrypt(Str::random(16))),
         ]);
+        User::create([
+            'cin' => 'CIN10023',
+            'nom' => 'MALADO',
+            'prenom' => 'Diallo',
+            'profil' => 'cashier',
+            'email' => 'pay4@gmail.com',
+            'tel' => '+21200000000',
+            'password' => Hash::make('root'),
+            'ville' => 'Casablanca',
+            'adresse' => 'Maarif Casablanca',
+            'activer' => false,
+            'url_carte' => 'link_file',
+            'pays_id' => 2,
+            //'confirmation_token' => true, //str_replace('/', '', bcrypt(Str::random(16))),
+        ]);
+        User::create([
+            'cin' => 'CIN10023',
+            'nom' => 'MALADO',
+            'prenom' => 'Diallo',
+            'profil' => 'cashier',
+            'email' => 'pay5@gmail.com',
+            'tel' => '+21200000000',
+            'password' => Hash::make('root'),
+            'ville' => 'Casablanca',
+            'adresse' => 'Maarif Casablanca',
+            'activer' => false,
+            'url_carte' => 'link_file',
+            'pays_id' => 2,
+            //'confirmation_token' => true, //str_replace('/', '', bcrypt(Str::random(16))),
+        ]);
     }
 }
