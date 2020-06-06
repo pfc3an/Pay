@@ -17,13 +17,13 @@ class Caissier extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
-    public function depot(){
+    public function depots(){
         return $this->hasMany(Depot::class);
     }
-    public function retrait(){
+    public function retraits(){
         return $this->hasMany(Retrait::class);
     }
-    public function rectification(){
+    public function rectifications(){
         return $this->hasMany(RectificationDepot::class);
     }
 }

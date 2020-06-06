@@ -18,6 +18,6 @@ class Depot extends Model
         return $this->belongsTo(Particulier::class);
     }
     public function rectification(){
-        return $this->belongsTo(RectificationDepot::class);
+        return $this->hasOne(RectificationDepot::class);
     }
 }

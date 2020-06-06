@@ -14,4 +14,7 @@ class RectificationDepot extends Model
     public function caissier(){
         return $this->belongsTo(Caissier::class);
     }
+    public function depot(){
+        return $this->belongsTo(Depot::class);
+    }
 }
