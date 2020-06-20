@@ -7,7 +7,7 @@ namespace App\Models\Dao\Methods;
 use App\Models\Dao\Interfaces\IUserDao;
 use App\User;
 
-class UserDaoDao implements IUserDao
+class UserDao implements IUserDao
 {
 
     public function add(User $user)

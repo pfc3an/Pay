@@ -3,6 +3,7 @@
 use App\Models\Entities\PaiementParticulier;
 use App\Models\Entities\Particulier;
 use App\Models\Entities\QRCode;
+use App\Services\ServiceInit;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -28,6 +29,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('test', function () {
+    //$data = [1, 2, 3, 4, 5];
+    //dd(end($data));
+    $conf = config('config');
+    //dd(end($conf['type']));
+    dd(ServiceInit::typeDao()->all());
 
     $pp = \App\Models\Entities\Paiement::find(1);
     return response()->json($pp);

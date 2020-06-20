@@ -29,151 +29,163 @@ use Illuminate\Support\Facades\App;
 class ServiceInit
 {
     public static function agenceDao() : IAgenceDao {
-        App::bind('dao', function(){
-            $config = config('config');
-            return new $config['v2'][0];
+        $config = config('config');
+        $config = end($config['agence']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
         });
         return  App::make('dao');
     }
     public static function caissierDao() : ICaissierDao {
-        App::bind('dao', function(){
-            $config = config('config');
-            return new $config['v2'][0];
+        $config = config('config');
+        $config = end($config['caissier']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
         });
         return  App::make('dao');
     }
     public static function clientDao() : IClientDao {
-        App::bind('dao', function(){
-            $config = config('config');
-            return new $config['v2'][0];
+        $config = config('config');
+        $config = end($config['client']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
         });
         return  App::make('dao');
     }
     public static function commercantDao() : ICommercantDao {
-        App::bind('dao', function(){
-            $config = config('config');
-            return new $config['v2'][0];
+        $config = config('config');
+        $config = end($config['commercant']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
         });
         return  App::make('dao');
     }
     public static function demandeDao() : IDemandeDao {
-        App::bind('dao', function(){
-            $config = config('config');
-            return new $config['v2'][0];
+        $config = config('config');
+        $config = end($config['demande']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
         });
         return  App::make('dao');
     }
     public static function depotDao() : IDepotDao {
-        App::bind('dao', function(){
-            $config = config('config');
-            return new $config['v2'][0];
+        $config = config('config');
+        $config = end($config['depot']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
         });
         return  App::make('dao');
     }
     public static function factureDao() : IFactureDao {
-        App::bind('dao', function(){
-            $config = config('config');
-            return new $config['v2'][0];
+        $config = config('config');
+        $config = end($config['facture']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
         });
         return  App::make('dao');
     }
     public static function historicPCDao() : IHistoriquePlafondCommercantDao {
-        App::bind('dao', function(){
-            $config = config('config');
-            return new $config['v2'][0];
+        $config = config('config');
+        $config = end($config['historicPC']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
         });
         return  App::make('dao');
     }
     public static function historicSCDao() : IHistoriqueSousCompteDao {
-        App::bind('dao', function(){
-            $config = config('config');
-            return new $config['v2'][0];
+        $config = config('config');
+        $config = end($config['historicSC']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
         });
         return  App::make('dao');
     }
     public static function initTransfertDao() : IInitiationTransfertDao {
-        App::bind('dao', function(){
-            $config = config('config');
-            return new $config['v2'][0];
+        $config = config('config');
+        $config = end($config['initTransfert']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
         });
         return  App::make('dao');
     }
     public static function paiementDao() : IPaiementDao {
-        App::bind('dao', function(){
-            $config = config('config');
-            return new $config['v2'][0];
+        $config = config('config');
+        $config = end($config['paiement']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
         });
         return  App::make('dao');
     }
     public static function paiementParticulierDao() : IPaiementParticulierDao {
-        App::bind('dao', function(){
-            $config = config('config');
-            return new $config['v2'][0];
+        $config = config('config');
+        $config = end($config['paiementParticulier']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
         });
         return  App::make('dao');
     }
     public static function particulierDao() : IParticulierDao {
-        App::bind('dao', function(){
-            $config = config('config');
-            return new $config['v2'][0];
+        $config = config('config');
+        $config = end($config['particulier']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
         });
         return  App::make('dao');
     }
     public static function qrCodeDao() : IQRCodeDao {
-        App::bind('dao', function(){
-            $config = config('config');
-            return new $config['v2'][0];
+        $config = config('config');
+        $config = end($config['qrCode']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
         });
         return  App::make('dao');
     }
     public static function rectificationDao() : IRectificationDepotDao {
-        App::bind('dao', function(){
-            $config = config('config');
-            return new $config['v2'][0];
+        $config = config('config');
+        $config = end($config['rectification']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
         });
         return  App::make('dao');
     }
     public static function retraitDao() : IRetraitDao {
-        App::bind('dao', function(){
-            $config = config('config');
-            return new $config['v2'][0];
+        $config = config('config');
+        $config = end($config['retrait']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
         });
         return  App::make('dao');
     }
     public static function sousCompteDao() : ISousCompteDao {
-        App::bind('dao', function(){
-            $config = config('config');
-            return new $config['v2'][0];
+        $config = config('config');
+        $config = end($config['sousCompte']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
         });
         return  App::make('dao');
     }
     public static function transfertDao() : ITransfertDao {
-        App::bind('dao', function(){
-            $config = config('config');
-            return new $config['v2'][0];
+        $config = config('config');
+        $config = end($config['transfert']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
         });
         return  App::make('dao');
     }
     public static function typeDao() : ITypeDao {
-        App::bind('dao', function(){
-            $config = config('config');
-            return new $config['v2'][0];
+        $config = config('config');
+        $config = end($config['type']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
         });
         return  App::make('dao');
     }
     public static function userDao() : IUserDao {
-        App::bind('dao', function(){
-            $config = config('config');
-            return new $config['v2'][0];
+        $config = config('config');
+        $config = end($config['user']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
         });
         return  App::make('dao');
-    }
-
-
-    public function init(){
-        App::bind('dao', function(){
-            return new MTaskDao2();
-        });
-        return App::make('dao');
     }
 }
