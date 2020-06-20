@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Route::get('cycles/get',[CycleController::class,'get']);
 Route::get('/', function () {
     //date_default_timezone_set("Africa/Brazzaville");
     $date = Carbon::now()->isoWeek;
@@ -29,6 +30,7 @@ Route::get('/', function () {
 Route::get('test', function () {
 
     $pp = \App\Models\Entities\Paiement::find(1);
+    return response()->json($pp);
     foreach ($pp->particulier as $role) {
         //echo $role->pivot->created_at;
         dump($role->pivot);
