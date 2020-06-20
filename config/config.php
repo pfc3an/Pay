@@ -1,7 +1,6 @@
 <?php
 
-return $config =
-    [
+return $config = [
     'agence' => [
         0 => \App\Models\Dao\Methods\TypeDao::class,
     ],

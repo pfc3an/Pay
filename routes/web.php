@@ -33,7 +33,10 @@ Route::get('test', function () {
     //dd(end($data));
     $conf = config('config');
     //dd(end($conf['type']));
-    dd(ServiceInit::typeDao()->all());
+    $td = ServiceInit::typeDao();
+    $tc = ServiceInit::clientDao();
+
+    //dd($tc->get(1), $td->get(1));
 
     $pp = \App\Models\Entities\Paiement::find(1);
     return response()->json($pp);
