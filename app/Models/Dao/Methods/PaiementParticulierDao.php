@@ -4,10 +4,10 @@
 namespace App\Models\Dao\Methods;
 
 
-use App\Models\Dao\Interfaces\IPaimentParticulierDao;
+use App\Models\Dao\Interfaces\IPaiementParticulierDao;
 use App\Models\Entities\PaiementParticulier;
 
-class PaiementParticulierDao implements IPaimentParticulierDao
+class PaiementParticulierDao implements IPaiementParticulierDao
 {
 
     public function add(PaiementParticulier $pp)
