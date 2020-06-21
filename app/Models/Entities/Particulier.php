@@ -12,6 +12,24 @@ class Particulier extends Model
         'transfert_international', 'paiement', 'generation_qr', 'user_id'
     ];
 
+    protected $hidden = ['identifiant', 'solde', 'user_id', 'digit_code']; //attributes not serializable
+    protected $visible = []; //attributes serializable
+
+    //protected $attributes = ['identifiant_md5', 'solde_md5'];
+    protected $appends = ['identifiant_md5', 'solde_md5', 'digit_code_md5'];
+
+    public function getDigitCodeMd5Attribute()
+    {
+        return md5($this->attributes['digit_code']);
+    }
+    public function getIdentifiantMd5Attribute($key)
+    {
+        return md5($this->attributes['identifiant']);
+    }
+    public function getSoldeMd5Attribute() {
+        return md5($this->attributes['solde']);
+    }
+
     public function user(){
         return $this->belongsTo(User::class);
     }

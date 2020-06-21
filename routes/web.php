@@ -3,10 +3,12 @@
 use App\Models\Entities\PaiementParticulier;
 use App\Models\Entities\Particulier;
 use App\Models\Entities\QRCode;
+use App\Services\APIHelpers;
 use App\Services\ServiceInit;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,10 +27,15 @@ Route::get('/', function () {
     $date = Carbon::now()->isoWeek;
     date_default_timezone_set("Africa/Casablanca");
     $date1 = Carbon::now();
-    dd($date, $date1);
+    //dd($date, $date1);
     return view('welcome');
 });
 Route::get('test', function () {
+    return Particulier::with(['client', 'qr_codes'])->first()->toJson();
+
+    $users = ServiceInit::userDao()->all();
+    $response = APIHelpers::apiResponseFormat(false, 200, '', $users);
+    return Response::json($response);
     //$data = [1, 2, 3, 4, 5];
     //dd(end($data));
     $conf = config('config');
