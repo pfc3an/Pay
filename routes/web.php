@@ -5,9 +5,11 @@ use App\Models\Entities\Particulier;
 use App\Models\Entities\QRCode;
 use App\Services\APIHelpers;
 use App\Services\ServiceInit;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
@@ -32,7 +34,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('test', function () {
-    $u = config('database')['connections']['pgsql']['username'];
+    /*$u = config('database')['connections']['pgsql']['username'];
     dump($u);
     dump(\App\Models\Entities\Commercant::all());
     config('database')['connections']['pgsql']['username'] = 'kyle';
@@ -44,10 +46,11 @@ Route::get('test', function () {
     dump($locale = App::getLocale());
     App::setLocale('fr');
     dump($locale = App::getLocale());
-    dump(__('messages.hello'));
-    return Particulier::with(['client', 'qr_codes'])->first()->toJson(); //toArray(), toJson()
+    dump(__('messages.hello'));*/
+    //return Response::json(Particulier::with(['client', 'qr_codes'])->first());
+    //return Particulier::with(['client', 'qr_codes'])->first()->toJson(); //toArray(), toJson()
 
-    $users = ServiceInit::userDao()->all();
+    /*$users = ServiceInit::userDao()->all();
     $response = APIHelpers::apiResponseFormat(false, 200, '', $users);
     return Response::json($response);
     //$data = [1, 2, 3, 4, 5];
@@ -66,18 +69,13 @@ Route::get('test', function () {
         dump($role->pivot);
     }
 
-    dd($pp);
+    dd($pp);*/
 
-
-    /*DB::transaction(function () {
-        DB::table('users')->update(['votes' => 1]);
-        DB::table('posts')->delete();
-    }, 2);*/
 
 
     //dump(Particulier::find(1)->identifiant);
     //dump(Particulier::find(2)->identifiant);
-    $code = QRCode::find(1);
+    /*$code = QRCode::find(1);
     dd($code->particulier);
     $code0 = DB::table('q_r_codes')->first();
     $code1 = DB::table('q_r_codes')->where('id','=',1)->get();
@@ -102,5 +100,38 @@ Route::get('test', function () {
     );
     //dd($code, $code->paiement);
     die();
-    //return view('welcome');
+    //return view('welcome');*/
+
+    $transaction = DB::transaction(function () {
+        $user = User::create([
+            'cin' => 'CIN0123',
+            'nom' => 'ABIR',
+            'prenom' => 'Mariel Evha',
+            'profil' => 'particular',
+            'email' => 'evenma.org@gmail.com',
+            'tel' => '+21200000000',
+            'password' => Hash::make('root'),
+            'ville' => 'Casablanca',
+            'adresse' => 'Maarif Casablanca',
+            'activer' => false,
+            'url_carte' => 'link_file',
+            'pays_id' => 1,
+            //'confirmation_token' => true, //str_replace('/', '', bcrypt(Str::random(16))),
+        ]);
+        Particulier::create([
+            'identifiant' => rand(100000, 999999),
+            'profil' => 'customer',
+            'solde' => 1000,
+            'solde_erreur' => 0,
+            'digit_code' => rand(100000, 999999),
+            'depot' => true,
+            'retrait' => true,
+            'paiement' => true,
+            'generation_qr' => true,
+            'transfert_national' => true,
+            'transfert_international' => true,
+            'user_id' => 2,
+        ]);
+    });
+    dd($transaction);
 });
