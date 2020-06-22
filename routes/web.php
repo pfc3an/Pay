@@ -4,7 +4,7 @@ use App\Models\Entities\PaiementParticulier;
 use App\Models\Entities\Particulier;
 use App\Models\Entities\QRCode;
 use App\Services\APIHelpers;
-use App\Services\ServiceInit;
+use App\Services\DaoInit;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
@@ -26,14 +26,16 @@ use Illuminate\Support\Facades\Route;
 */
 //Route::get('cycles/get',[CycleController::class,'get']);
 Route::get('/', function () {
-    //date_default_timezone_set("Africa/Brazzaville");
-    $date = Carbon::now()->isoWeek;
-    date_default_timezone_set("Africa/Casablanca");
-    $date1 = Carbon::now();
-    //dd($date, $date1);
     return view('welcome');
 });
 Route::get('test', function () {
+    //Time Zone
+    /*//date_default_timezone_set("Africa/Brazzaville");
+    $date = Carbon::now()->isoWeek;
+    date_default_timezone_set("Africa/Casablanca");
+    $date1 = Carbon::now();
+    //dd($date, $date1);*/
+
     /*$u = config('database')['connections']['pgsql']['username'];
     dump($u);
     dump(\App\Models\Entities\Commercant::all());
@@ -50,15 +52,15 @@ Route::get('test', function () {
     //return Response::json(Particulier::with(['client', 'qr_codes'])->first());
     //return Particulier::with(['client', 'qr_codes'])->first()->toJson(); //toArray(), toJson()
 
-    /*$users = ServiceInit::userDao()->all();
+    /*$users = DaoInit::userDao()->all();
     $response = APIHelpers::apiResponseFormat(false, 200, '', $users);
     return Response::json($response);
     //$data = [1, 2, 3, 4, 5];
     //dd(end($data));
     $conf = config('config');
     //dd(end($conf['type']));
-    $td = ServiceInit::typeDao();
-    $tc = ServiceInit::clientDao();
+    $td = DaoInit::typeDao();
+    $tc = DaoInit::clientDao();
 
     //dd($tc->get(1), $td->get(1));
 
@@ -102,7 +104,7 @@ Route::get('test', function () {
     die();
     //return view('welcome');*/
 
-    $transaction = DB::transaction(function () {
+    /*DB::transaction(function () {
         $user = User::create([
             'cin' => 'CIN0123',
             'nom' => 'ABIR',
@@ -130,8 +132,53 @@ Route::get('test', function () {
             'generation_qr' => true,
             'transfert_national' => true,
             'transfert_international' => true,
+            'user_id' => $user->id,
+        ]);
+    });*/
+    /*function transact2(){
+        DB::beginTransaction();
+            $user = User::create([
+                'cin' => 'CIN0123',
+                'nom' => 'ABIR',
+                'prenom' => 'Mariel Evha',
+                'profil' => 'particular',
+                'email' => 'evenma.org@gmail.com',
+                'tel' => '+21200000000',
+                'password' => Hash::make('root'),
+                'ville' => 'Casablanca',
+                'adresse' => 'Maarif Casablanca',
+                'activer' => false,
+                'url_carte' => 'link_file',
+                'pays_id' => 1,
+                //'confirmation_token' => true, //str_replace('/', '', bcrypt(Str::random(16))),
+            ]);
+            $part = Particulier::create([
+            'identifiant' => rand(100000, 999999),
+            'profil' => 'customer',
+            'solde' => 1000,
+            'solde_erreur' => 0,
+            'digit_code' => rand(100000, 999999),
+            'depot' => true,
+            'retrait' => true,
+            'paiement' => true,
+            'generation_qr' => true,
+            'transfert_national' => true,
+            'transfert_international' => true,
             'user_id' => 2,
         ]);
-    });
-    dd($transaction);
+            if (!$user || !$part) {
+                DB::rollBack();
+                return "success";
+            }
+            else {
+                DB::commit();
+                return "success";
+            }
+    }
+    dd(transact2());*/
+
+    $part = DaoInit::particulierDao()->all();
+    return Response::json(APIHelpers::apiResponseFormat(false, 200, '', $part));
+    //return Particulier::with(['client', 'qr_codes'])->get();
+    //dd($part);
 });

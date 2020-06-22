@@ -26,7 +26,7 @@ use App\Models\Dao\Interfaces\ITypeDao;
 use App\Models\Dao\Interfaces\IUserDao;
 use Illuminate\Support\Facades\App;
 
-class ServiceInit
+class DaoInit
 {
     public static function agenceDao() : IAgenceDao {
         $config = config('config');
