@@ -6,6 +6,7 @@ use App\Models\Entities\QRCode;
 use App\Services\APIHelpers;
 use App\Services\ServiceInit;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Response;
@@ -31,7 +32,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('test', function () {
-    return Particulier::with(['client', 'qr_codes'])->first()->toJson();
+    $u = config('database')['connections']['pgsql']['username'];
+    dump($u);
+    dump(\App\Models\Entities\Commercant::all());
+    config('database')['connections']['pgsql']['username'] = 'kyle';
+    config('database')['connections']['pgsql']['password'] = 'kyle';
+    dd(\App\Models\Entities\Client::all());
+    die();
+    dd($uu);
+    dump(__('messages.hello'));
+    dump($locale = App::getLocale());
+    App::setLocale('fr');
+    dump($locale = App::getLocale());
+    dump(__('messages.hello'));
+    return Particulier::with(['client', 'qr_codes'])->first()->toJson(); //toArray(), toJson()
 
     $users = ServiceInit::userDao()->all();
     $response = APIHelpers::apiResponseFormat(false, 200, '', $users);

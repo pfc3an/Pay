@@ -61,5 +61,50 @@ return $config = [
     'user' => [
         0 => \App\Models\Dao\Methods\UserDao::class,
     ],
+    'pays' => [
+        0 => null,
+    ],
+    'parametre' => [
+        0 => null,
+    ],
+    'fraisTransfert' => [
+        0 => null,
+    ],
+    'typeAdmin' => [
+        0 => null,
+    ],
+    'admin' => [
+        0 => null,
+    ],
+    'role' => [
+        0 => null,
+    ],
+    'adminRole' => [
+        0 => null,
+    ],
+    'typeAdminRole' => [
+        0 => null,
+    ],
+    'notification' => [
+        0 => null,
+    ],
+    'historicFT' => [
+        0 => null,
+    ],
+    'historicRole' => [
+        0 => null,
+    ],
+    'historicTypeRole' => [
+        0 => null,
+    ],
+    'monaie' => [
+        0 => null,
+    ],
+    'devise' => [
+        0 => null,
+    ],
+    'historicDevise' => [
+        0 => null,
+    ],
 ];
 

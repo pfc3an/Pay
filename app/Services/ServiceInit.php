@@ -188,4 +188,126 @@ class ServiceInit
         });
         return  App::make('dao');
     }
+    public static function paysDao() {
+        $config = config('config');
+        $config = end($config['pays']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
+        });
+        return  App::make('dao');
+    }
+    public static function parametreDao() {
+        $config = config('config');
+        $config = end($config['parametre']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
+        });
+        return  App::make('dao');
+    }
+    public static function fraisTransfertDao() {
+        $config = config('config');
+        $config = end($config['fraisTransfert']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
+        });
+        return  App::make('dao');
+    }
+    public static function typeAdminDao() {
+        $config = config('config');
+        $config = end($config['typeAdmin']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
+        });
+        return  App::make('dao');
+    }
+    public static function adminDao() {
+        $config = config('config');
+        $config = end($config['admin']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
+        });
+        return  App::make('dao');
+    }
+    public static function roleDao() {
+        $config = config('config');
+        $config = end($config['role']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
+        });
+        return  App::make('dao');
+    }
+    public static function adminRoleDao() {
+        $config = config('config');
+        $config = end($config['adminRole']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
+        });
+        return  App::make('dao');
+    }
+    public static function typeAdminRoleDao() {
+        $config = config('config');
+        $config = end($config['typeAdminRole']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
+        });
+        return  App::make('dao');
+    }
+    public static function notificationDao() {
+        $config = config('config');
+        $config = end($config['notification']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
+        });
+        return  App::make('dao');
+    }
+    public static function historicFTDao() {
+        $config = config('config');
+        $config = end($config['historicFT']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
+        });
+        return  App::make('dao');
+    }
+    public static function historicRoleDao() {
+        $config = config('config');
+        $config = end($config['historicRole']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
+        });
+        return  App::make('dao');
+    }
+    public static function historicTypeRoleDao() {
+        $config = config('config');
+        $config = end($config['historicTypeRole']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
+        });
+        return  App::make('dao');
+    }
+    public static function monaieDao() {
+        $config = config('config');
+        $config = end($config['monaie']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
+        });
+        return  App::make('dao');
+    }
+    public static function deviseDao() {
+        $config = config('config');
+        $config = end($config['devise']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
+        });
+        return  App::make('dao');
+    }
+    public static function historicDeviseDao() {
+        $config = config('config');
+        $config = end($config['historicDevise']);
+        App::bind('dao', function() use ($config) {
+            return new $config;
+        });
+        return  App::make('dao');
+    }
+
+
 }
