@@ -3,6 +3,7 @@
 namespace App\Models\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
 
 class Particulier extends Model
 {
@@ -16,11 +17,14 @@ class Particulier extends Model
     protected $visible = []; //attributes serializable
 
     //protected $attributes = ['identifiant_md5', 'solde_md5'];
-    protected $appends = ['identifiant_md5', 'solde_md5', 'digit_code_md5'];
+    protected $appends = ['is_equal', 'identifiant_md5', 'solde_md5', 'digit_code_md5', 'digit_code_sha'];
 
     public function getDigitCodeMd5Attribute()
     {
         return md5($this->attributes['digit_code']);
+    }
+    public function getDigitCodeShaAttribute() {
+        return Hash::make($this->attributes['digit_code']);//md5($this->attributes['digit_code']);
     }
     public function getIdentifiantMd5Attribute($key)
     {
@@ -28,6 +32,10 @@ class Particulier extends Model
     }
     public function getSoldeMd5Attribute() {
         return md5($this->attributes['solde']);
+    }
+    public function getIsEqualAttribute() {
+        $hsh = "$2y$10\$ORkXDVxqUewMbLY18M5GC.0Z4kkGGYRNNqaEZHQaGxNpTKg6zvJGe";
+        return Hash::check(802585, $hsh);
     }
 
     public function user(){
