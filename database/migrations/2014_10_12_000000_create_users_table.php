@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('ville');
             $table->string('adresse');
             $table->string('url_carte');
-            $table->boolean('activer');
+            $table->boolean('activer')->default(false);
             $table->foreignId('pays_id');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

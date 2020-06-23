@@ -6,7 +6,7 @@ namespace App\Models\Dao\Interfaces;
 
 use App\User;
 
-interface IUser
+interface IUserDao
 {
     public function add(User $user);
     public function get($id);
