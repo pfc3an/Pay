@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\App;
 
 class DaoInit
 {
-    protected static $KEY = "config";
+    protected static $KEY = "config_dao";
     protected static $CONFIG;
 
     protected static function CONFIG()

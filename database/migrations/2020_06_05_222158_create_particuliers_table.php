@@ -25,6 +25,7 @@ class CreateParticuliersTable extends Migration
             $table->boolean('transfert_national');
             $table->boolean('transfert_international');
             $table->boolean('paiement');
+            //$table->boolean('use_critical');
             $table->boolean('generation_qr');
             $table->foreignId('user_id');
             $table->timestamps();

@@ -2,10 +2,10 @@
 
 return $config = [
     'agence' => [
-        0 => \App\Models\Dao\Methods\TypeDao::class,
+        0 => \App\Models\Dao\Methods\AgenceDao::class,
     ],
     'caissier' => [
-        0 => \App\Models\Dao\Methods\CaissierDaoDao::class,
+        0 => \App\Models\Dao\Methods\CaissierDao::class,
     ],
     'client' => [
         0 => \App\Models\Dao\Methods\ClientDao::class

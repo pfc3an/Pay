@@ -7,7 +7,7 @@ namespace App\Models\Dao\Methods;
 use App\Models\Dao\Interfaces\IAgenceDao;
 use App\Models\Entities\Agence;
 
-class AgenceDaoDao implements IAgenceDao
+class AgenceDao implements IAgenceDao
 {
 
     public function add(Agence $agence)

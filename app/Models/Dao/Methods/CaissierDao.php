@@ -7,7 +7,7 @@ namespace App\Models\Dao\Methods;
 use App\Models\Dao\Interfaces\ICaissierDao;
 use App\Models\Entities\Caissier;
 
-class CaissierDaoDao implements ICaissierDao
+class CaissierDao implements ICaissierDao
 {
 
     public function add(Caissier $caissier)
