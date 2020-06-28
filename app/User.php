@@ -38,4 +38,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function pays(){
+        return $this->belongsTo(Pays::class);
+    }
+    public function admin(){
+        return $this->hasOne(Administrateur::class);
+    }
 }
