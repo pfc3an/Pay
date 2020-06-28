@@ -53,7 +53,7 @@ class AddForeignKey extends Migration
         });
         Schema::table('historique_plafond_commercants', function (Blueprint $table){
             $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
-            //$table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
+            $table->foreign('admin_id')->references('id')->on('administrateurs')->onDelete('cascade');
         });
         Schema::table('historique_sous_comptes', function (Blueprint $table){
             $table->foreign('sous_compte_id')->references('id')->on('sous_comptes')->onDelete('cascade');
@@ -74,14 +74,14 @@ class AddForeignKey extends Migration
             $table->foreign('caissier_id')->references('id')->on('caissiers')->onDelete('cascade');
             $table->foreign('particulier_id')->references('id')->on('particuliers')->onDelete('cascade');
         });
-        /*Schema::table('users', function (Blueprint $table){
+        Schema::table('users', function (Blueprint $table){
             $table->foreign('pays_id')->references('id')->on('pays')->onDelete('cascade');
         });
         Schema::table('types', function (Blueprint $table){
             $table->foreign('pays_id')->references('id')->on('pays')->onDelete('cascade');
-        });*/
+        });
 
-          //Monaie in Pays 
+          //Monaie in Pays
           Schema::table('pays', function (Blueprint $table){
             $table->foreign('monaie_id')->references('id')->on('monaies')->onDelete('cascade');
         });
@@ -94,7 +94,7 @@ class AddForeignKey extends Migration
          // Parametre & Administrateur in historique_parametres
         Schema::table('historique_parametres', function (Blueprint $table){
             $table->foreign('parametre_id') ->references('id')->on('parametres')->onDelete('cascade');
-            $table->foreign('administrateur_id') ->references('id')->on('administrateurs')->onDelete('cascade');  
+            $table->foreign('administrateur_id') ->references('id')->on('administrateurs')->onDelete('cascade');
         });
 
         /*devise et historique pas do
@@ -114,7 +114,7 @@ class AddForeignKey extends Migration
 
         //User & type_administrateurs in administrateur
         Schema::table('administrateurs', function (Blueprint $table){
-         // $table->foreign('user_id') ->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id') ->references('id')->on('users')->onDelete('cascade');
             $table->foreign('type_administrateur_id') ->references('id')->on('type_administrateurs')->onDelete('cascade');
         });
 
@@ -152,7 +152,7 @@ class AddForeignKey extends Migration
         Schema::table('notifications', function (Blueprint $table){
             $table->foreign('role_id') ->references('id')->on('roles')->onDelete('cascade');
         });
-        
+
         //Notification & administrateur in TraitementNotifications
         Schema::table('traitement_notifications', function (Blueprint $table){
             $table->foreign('notification_id') ->references('id')->on('notifications');
