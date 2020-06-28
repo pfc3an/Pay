@@ -13,12 +13,12 @@ class CreateTraitementNotificationsTable extends Migration
      */
     public function up()
     {
-       /* Schema::create('traitement_notifications', function (Blueprint $table) {
+        Schema::create('traitement_notifications', function (Blueprint $table) {
             $table->id();
             $table->dateTime('date');
             $table->foreignId('notification_id');
             $table->foreignId('administrateur_id');
-        });*/
+        });
     }
 
     /**

@@ -182,3 +182,7 @@ Route::get('test', function () {
     //return Particulier::with(['client', 'qr_codes'])->get();
     //dd($part);
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

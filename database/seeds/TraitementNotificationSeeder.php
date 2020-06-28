@@ -13,10 +13,10 @@ class TraitementNotificationSeeder extends Seeder
      */
     public function run()
     {
-        TraitementNotification::create([
+       /* TraitementNotification::create([
             'date' => Carbon::now(),
             'notification_id' => 1,
             'administrateur_id' =>1
-        ]);
+        ]);*/
     }
 }
